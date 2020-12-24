@@ -52,7 +52,7 @@ steps:
       password:
         from_secret: password
     commands:
-      - sqlpackage /a:Publish /p:VerifyDeployment=True /p:CommandTimeout=0 /p:DatabaseServiceObjective=P2 /p:AllowIncompatiblePlatform=True /tsn:tcp:$serverName /tdn:$dbName /tu:$userName /tp:$password /sf:/drone/src/InventoryDatabase.build/bin/Debug/netstandard2.0/InventoryDatabase.build.dacpac
+      - sqlpackage /a:Publish /p:VerifyDeployment=True /p:CommandTimeout=0 /p:DatabaseServiceObjective=P2 /p:AllowIncompatiblePlatform=True /tsn:tcp:$serverName /tdn:$dbName /tu:$userName /tp:$password /sf:/drone/src/InventoryDB/InventoryDB.build/bin/Debug/netstandard2.0/InventoryDB.build.dacpac
 
 trigger:
   branch:
