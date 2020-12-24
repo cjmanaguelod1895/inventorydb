@@ -1,0 +1,63 @@
+kind: pipeline
+type: docker
+name: Project Build Pull Request Checker
+
+steps:    
+  - name: clean
+    image: mcr.microsoft.com/dotnet/sdk:latest
+    commands:
+      - dotnet clean InventoryDB/InventoryDB.sqlproj
+
+  - name: build
+    image: mcr.microsoft.com/dotnet/core/sdk:latest
+    commands:
+      - dotnet build InventoryDB/InventoryDB.sqlproj
+     
+      
+trigger:
+  branch:
+    include:
+      - master
+  event:
+    include:
+      - pull_request
+
+---
+kind: pipeline
+type: docker
+name: Project Build and SQL Deploy
+
+steps:    
+  - name: clean
+    image: mcr.microsoft.com/dotnet/sdk:latest
+    commands:
+      - dotnet clean InventoryDB/InventoryDB.sqlproj
+
+
+  - name: build
+    image: mcr.microsoft.com/dotnet/core/sdk:latest
+    commands:
+      - dotnet build InventoryDB/InventoryDB.sqlproj
+
+
+  - name: Deploy to Azure SQL Database 
+    image: sijaymm/sqlpackage
+    environment:
+      serverName:
+        from_secret: serverName
+      dbName:
+        from_secret: dbName
+      userName:
+        from_secret: userName
+      password:
+        from_secret: password
+    commands:
+      - sqlpackage /a:Publish /p:VerifyDeployment=True /p:CommandTimeout=0 /p:DatabaseServiceObjective=P2 /p:AllowIncompatiblePlatform=True /tsn:tcp:$serverName /tdn:$dbName /tu:$userName /tp:$password /sf:/drone/src/InventoryDatabase.build/bin/Debug/netstandard2.0/InventoryDatabase.build.dacpac
+
+trigger:
+  branch:
+    include:
+      - master
+  event:
+    include:
+      - push
