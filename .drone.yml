@@ -31,13 +31,14 @@ steps:
   - name: clean
     image: mcr.microsoft.com/dotnet/sdk:latest
     commands:
-      - dotnet clean InventoryDB/InventoryDB.sqlproj
+      #- dotnet clean InventoryDB/InventoryDB.
+      - dotnet clean InventoryDB.sln
 
 
   - name: build
     image: mcr.microsoft.com/dotnet/core/sdk:latest
     commands:
-      - dotnet build InventoryDB/InventoryDB.sqlproj
+      - dotnet build InventoryDB.sln
 
 
   - name: Deploy to Azure SQL Database 
