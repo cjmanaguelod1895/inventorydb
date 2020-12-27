@@ -66,5 +66,9 @@
     <Build Include="dbo\Tables\Users.sql" />
     <Build Include="dbo\Stored Procedures\sp_Users.sql" />
     <Build Include="dbo\Stored Procedures\SP_Student.sql" />
+    <Build Include="dbo\Tables\Region.sql" />
+    <Build Include="dbo\Tables\Province.sql" />
+    <Build Include="dbo\Tables\CityMunicipality.sql" />
+    <Build Include="dbo\Tables\Brgy.sql" />
   </ItemGroup>
 </Project>
