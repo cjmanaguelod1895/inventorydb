@@ -70,5 +70,9 @@
     <Build Include="dbo\Tables\Province.sql" />
     <Build Include="dbo\Tables\CityMunicipality.sql" />
     <Build Include="dbo\Tables\Brgy.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Region.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Province.sql" />
+    <Build Include="dbo\Stored Procedures\sp_CityMunicipality.sql" />
+    <Build Include="dbo\Stored Procedures\sp_Barangay.sql" />
   </ItemGroup>
 </Project>
