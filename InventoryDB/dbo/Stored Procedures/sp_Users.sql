@@ -3,10 +3,14 @@
 	@Name varchar(MAX),
 	@Age varchar(50),
 	@Address varchar(100),
+	@BirthDate Date,
 	@EmailAddress varchar(50),
 	@Role varchar(50),
 	@Username varchar(50),
 	@Password varchar(50),
+	@IsActive char(1),
+	@DateCreated Datetime,
+	@LastLoginDate Datetime,
 	@OperationType int AS BEGIN TRAN 
 
 IF(@OperationType = 0) --Select
@@ -33,8 +37,8 @@ ELSE IF(@OperationType = 2) --Insert
 	BEGIN
 
 INSERT INTO
-	Users ([Name],[Age],[Address],[EmailAddress],[Username],[Password])
-VALUES(@Name, @Age,@Address,@EmailAddress,@Username,@Password)
+	Users ([Name],[Age],[Address],[BirthDate],[EmailAddress],[Username],[Password],[IsActive],[DateCreated],[Role])
+VALUES(@Name, @Age,@Address,@BirthDate,@EmailAddress,@Username,@Password,@IsActive,@DateCreated,@Role)
 SELECT
 	*
 FROM
@@ -53,7 +57,10 @@ SET
 	[Address] = @Address,
 	[EmailAddress] = @EmailAddress,
 	[Username] = @Username,
-	[Password] = @Password
+	[Password] = @Password,
+	[IsActive] = @IsActive,
+	[DateCreated] = @DateCreated,
+	[Role] = @Role
 WHERE
 	UserId = @UserId
 SELECT
@@ -77,6 +84,12 @@ ELSE IF(@OperationType = 5) --Login
 FROM
 	Users
 WHERE
-	Username = @Username and Password = @Password 
+	Username = @Username and Password = @Password
+UPDATE
+	Users
+SET
+	[LastLoginDate] = @LastLoginDate
+WHERE
+	Username = @Username
 
 COMMIT TRAN
