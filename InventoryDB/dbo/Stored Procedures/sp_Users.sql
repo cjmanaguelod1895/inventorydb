@@ -3,6 +3,10 @@
 	@Name varchar(MAX),
 	@Age varchar(50),
 	@Address varchar(100),
+	@City nvarchar(50),
+	@Region nvarchar(50),
+	@Province nvarchar(50),
+	@Barangay nvarchar(50),
 	@BirthDate Date,
 	@EmailAddress varchar(50),
 	@Role varchar(50),
@@ -37,8 +41,8 @@ ELSE IF(@OperationType = 2) --Insert
 	BEGIN
 
 INSERT INTO
-	Users ([Name],[Age],[Address],[BirthDate],[EmailAddress],[Username],[Password],[IsActive],[DateCreated],[Role])
-VALUES(@Name, @Age,@Address,@BirthDate,@EmailAddress,@Username,@Password,@IsActive,@DateCreated,@Role)
+	Users ([Name],[Age],[Address],[City],[Region],[Province],[Barangay],[BirthDate],[EmailAddress],[Username],[Password],[IsActive],[DateCreated],[Role])
+VALUES(@Name, @Age,@Address,@City,@Region,@Province,@Barangay,@BirthDate,@EmailAddress,@Username,@Password,@IsActive,@DateCreated,@Role)
 SELECT
 	*
 FROM
@@ -55,7 +59,10 @@ SET
 	[Name] = @Name,
 	[Age] = @Age,
 	[Address] = @Address,
-	[EmailAddress] = @EmailAddress,
+	[City] = @City,
+	[Region] = @Region,
+	[Province] = @Province,
+	[Barangay] = @Barangay,
 	[Username] = @Username,
 	[Password] = @Password,
 	[IsActive] = @IsActive,

@@ -3,6 +3,10 @@
     [Name]          VARCHAR (MAX) NULL,
     [Age]           VARCHAR (50)  NULL,
     [Address]       VARCHAR (100) NULL,
+    [City]          NVARCHAR (50) NULL,
+    [Region]        NVARCHAR (50) NULL,
+    [Province]      NVARCHAR (50) NULL,
+    [Barangay]      NVARCHAR (50) NULL,
     [BirthDate]     DATE          NULL,
     [EmailAddress]  VARCHAR (50)  NULL,
     [Username]      VARCHAR (50)  NULL,
@@ -13,6 +17,8 @@
     [LastLoginDate] DATETIME      NULL,
     CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([UserId] ASC)
 );
+
+
 
 
 
