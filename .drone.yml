@@ -58,7 +58,7 @@ steps:
 trigger:
   branch:
     include:
-      - master
+      - salesPro_branch
   event:
     include:
       - push
