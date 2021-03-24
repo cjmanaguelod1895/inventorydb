@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [salespropos].[categories] (
-    [id]         BIGINT         IDENTITY (19, 1) NOT NULL,
+    [id]         BIGINT         IDENTITY (20, 1) NOT NULL,
     [name]       NVARCHAR (191) NOT NULL,
     [image]      NVARCHAR (191) DEFAULT (NULL) NULL,
     [parent_id]  INT            DEFAULT (NULL) NULL,
@@ -8,6 +8,8 @@
     [updated_at] DATETIME       DEFAULT (NULL) NULL,
     CONSTRAINT [PK_categories_id] PRIMARY KEY CLUSTERED ([id] ASC)
 );
+
+
 
 
 GO
