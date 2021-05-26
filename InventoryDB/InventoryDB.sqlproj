@@ -141,5 +141,6 @@
     <Build Include="salespropos\Stored Procedures\sp_Currency.sql" />
     <Build Include="salespropos\Stored Procedures\sp_Brand.sql" />
     <Build Include="salespropos\Stored Procedures\sp_Billers.sql" />
+    <Build Include="salespropos\Stored Procedures\sp_GeneralSettings.sql" />
   </ItemGroup>
 </Project>
